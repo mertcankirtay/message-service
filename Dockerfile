@@ -6,7 +6,7 @@ COPY . .
 
 RUN go mod download
 
-RUN go build .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o message-service .
 
 FROM alpine:latest
 
