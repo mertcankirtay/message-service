@@ -13,6 +13,13 @@ import (
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
 )
 
+// getSentMessages godoc
+// @Summary Get sent messages
+// @Description Get sent messages
+// @Accept  json
+// @Produce  json
+// @Query page
+// @Router /messages [get]
 func GetSentMessages(c *gin.Context) {
 	// Get desired page from querystring
 	pageQuery := c.Query("page")
@@ -54,6 +61,12 @@ func GetSentMessages(c *gin.Context) {
 	c.AbortWithStatusJSON(http.StatusOK, respBody)
 }
 
+// toggleScheduler godoc
+// @Summary Toggle the scheduler
+// @Description Toggle the scheduler
+// @Accept  json
+// @Produce  json
+// @Router /scheduler/toggle [post]
 func ToggleScheduler(c *gin.Context) {
 	if services.IsRunning {
 		services.StopScheduler()
