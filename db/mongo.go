@@ -61,6 +61,11 @@ func checkColls(db *mongo.Database) (err error) {
 		if _, err = db.Collection("messages").Indexes().CreateOne(context.TODO(), mongo.IndexModel{Keys: map[string]any{"is_sent": 1}}); err != nil {
 			return
 		}
+
+		// Load sample data to new collection
+		if _, err = db.Collection("messages").InsertMany(context.TODO(), sampleData); err != nil {
+			return
+		}
 	}
 
 	return
