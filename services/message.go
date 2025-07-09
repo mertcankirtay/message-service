@@ -117,7 +117,7 @@ func saveResult(id, msgID string) {
 	}
 
 	// Update db
-	if _, err := db.MessageColl.UpdateOne(context.TODO(), bson.M{"_id": id}, newDoc); err != nil {
+	if _, err := db.MessageColl.UpdateOne(context.TODO(), bson.M{"_id": id}, bson.M{"$set": newDoc}); err != nil {
 		fmt.Printf("Error while saving message result;\n%s\n", err.Error())
 		return
 	}
