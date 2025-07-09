@@ -13,11 +13,12 @@ import (
 	"github.com/mertcankirtay/message-service/helpers"
 	"github.com/mertcankirtay/message-service/models"
 	"go.mongodb.org/mongo-driver/v2/bson"
+	"go.mongodb.org/mongo-driver/v2/mongo/options"
 )
 
 func sendMessages() {
 	// Get all unsend messages
-	cur, err := db.MessageColl.Find(context.TODO(), bson.M{"is_sent": false})
+	cur, err := db.MessageColl.Find(context.TODO(), bson.M{"is_sent": false}, options.Find().SetLimit(2))
 
 	if err != nil {
 		fmt.Printf("Error while fetching messages;\n%s\n", err.Error())
