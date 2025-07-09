@@ -9,3 +9,8 @@ type WebhookResponseBody struct {
 	Message   string `json:"message"`
 	MessageID string `json:"messageId"`
 }
+
+type GetSentMessagesResponseBody struct {
+	Message  string    `json:"message"`
+	Messages []Message `json:"messages"`
+}

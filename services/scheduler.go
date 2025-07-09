@@ -6,11 +6,13 @@ import (
 )
 
 var cancel context.CancelFunc
+var IsRunning bool
 
 func InitScheduler() {
 	var ctx context.Context
 	ctx, cancel = context.WithCancel(context.Background())
 
+	IsRunning = true
 outer:
 	for {
 		// Check if the context is cancelled
@@ -27,4 +29,5 @@ outer:
 
 func StopScheduler() {
 	cancel()
+	IsRunning = false
 }
