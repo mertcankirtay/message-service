@@ -58,7 +58,7 @@ func checkColls(db *mongo.Database) (err error) {
 		}
 
 		// Create index for the new collection
-		if _, err = db.Collection("messages").Indexes().CreateOne(context.TODO(), mongo.IndexModel{Keys: map[string]any{"sent": 1}}); err != nil {
+		if _, err = db.Collection("messages").Indexes().CreateOne(context.TODO(), mongo.IndexModel{Keys: map[string]any{"is_sent": 1}}); err != nil {
 			return
 		}
 	}
