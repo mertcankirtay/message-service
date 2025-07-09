@@ -46,7 +46,7 @@ docker compose up
 
 The services will start and be available on the ports defined in your .env file.
 
-### Stopping the Application
+## Stopping the Application
 
 To stop the containers, press Ctrl + C in the terminal where the app is running.
 To stop and remove containers, use:
